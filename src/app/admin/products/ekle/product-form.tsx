@@ -27,9 +27,14 @@ export function ProductForm({ categories, initialData, variants: initialVariants
   const [variants, setVariants] = useState<{ size: string; color: string; sku: string; stock: number }[]>(
     initialVariants ?? []
   )
+  const [error, setError] = useState("")
+  const [submitting, setSubmitting] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setError("")
+    setSubmitting(true)
+
     const form = new FormData(e.currentTarget)
 
     const body = {
@@ -44,15 +49,24 @@ export function ProductForm({ categories, initialData, variants: initialVariants
     const url = initialData ? `/api/products/${initialData.id}` : "/api/products"
     const method = initialData ? "PUT" : "POST"
 
-    const res = await fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    })
+    try {
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      })
 
-    if (res.ok) {
-      router.push("/admin/products")
-      router.refresh()
+      if (res.ok) {
+        router.push("/admin/products")
+        router.refresh()
+      } else {
+        const data = await res.json().catch(() => ({}))
+        setError(data.error ?? `İşlem başarısız (${res.status})`)
+      }
+    } catch {
+      setError("Bağlantı hatası. Lütfen tekrar deneyin.")
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -71,6 +85,11 @@ export function ProductForm({ categories, initialData, variants: initialVariants
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      {error && (
+        <div className="rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm px-4 py-3">
+          {error}
+        </div>
+      )}
       <div className="grid grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium mb-1">Ürün Adı</label>
@@ -175,9 +194,10 @@ export function ProductForm({ categories, initialData, variants: initialVariants
       <div className="flex gap-3">
         <button
           type="submit"
-          className="px-6 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors"
+          disabled={submitting}
+          className="px-6 py-2 rounded-lg bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
         >
-          {initialData ? "Güncelle" : "Kaydet"}
+          {submitting ? "Kaydediliyor..." : initialData ? "Güncelle" : "Kaydet"}
         </button>
         <button
           type="button"

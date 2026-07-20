@@ -1,73 +1,24 @@
 import Link from "next/link"
 import { auth } from "@/lib/auth"
+import { prisma } from "@/lib/db"
+import { AdminSidebar } from "./sidebar"
+import { AdminMobileNav } from "./mobile-nav"
 
-export default async function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth()
 
+  const counts = await Promise.all([
+    prisma.order.count({ where: { status: "PENDING" } }),
+    prisma.dropshipperOrder.count({ where: { status: "FAILED" } }).catch(() => 0),
+  ])
+
   return (
-    <div className="min-h-screen flex">
-      <aside className="w-64 border-r bg-muted/30 p-6 hidden md:block">
-        <Link href="/admin" className="text-lg font-bold block mb-8">
-          ModaCini Admin
-        </Link>
-        <nav className="space-y-2">
-          <Link
-            href="/admin"
-            className="block px-3 py-2 rounded-lg text-sm hover:bg-muted transition-colors"
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="/admin/products"
-            className="block px-3 py-2 rounded-lg text-sm hover:bg-muted transition-colors"
-          >
-            Ürünler
-          </Link>
-          <Link
-            href="/admin/orders"
-            className="block px-3 py-2 rounded-lg text-sm hover:bg-muted transition-colors"
-          >
-            Siparişler
-          </Link>
-          <Link
-            href="/admin/kullanicilar"
-            className="block px-3 py-2 rounded-lg text-sm hover:bg-muted transition-colors"
-          >
-            Kullanıcılar
-          </Link>
-          <Link
-            href="/admin/kategoriler"
-            className="block px-3 py-2 rounded-lg text-sm hover:bg-muted transition-colors"
-          >
-            Kategoriler
-          </Link>
-          <Link
-            href="/admin/coupons"
-            className="block px-3 py-2 rounded-lg text-sm hover:bg-muted transition-colors"
-          >
-            Kuponlar
-          </Link>
-          <Link
-            href="/admin/dropshipping"
-            className="block px-3 py-2 rounded-lg text-sm hover:bg-muted transition-colors"
-          >
-            XML Dropshipping
-          </Link>
-        </nav>
-        <div className="mt-auto pt-8">
-          <p className="text-sm text-muted-foreground">
-            {session?.user?.email}
-          </p>
-          <Link href="/" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-            Siteye Dön
-          </Link>
-        </div>
-      </aside>
-      <main className="flex-1 p-8">{children}</main>
+    <div className="min-h-screen bg-background">
+      <AdminMobileNav session={session} pendingOrders={counts[0]} failedDropshipping={counts[1]} />
+      <AdminSidebar session={session} pendingOrders={counts[0]} failedDropshipping={counts[1]} />
+      <main className="md:pl-64 pt-14 md:pt-0">
+        <div className="p-4 md:p-8 max-w-7xl mx-auto">{children}</div>
+      </main>
     </div>
   )
 }
