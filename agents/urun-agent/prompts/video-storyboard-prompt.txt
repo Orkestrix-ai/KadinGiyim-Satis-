@@ -1,0 +1,28 @@
+Create a detailed video storyboard and script for a {{type}} video about the following product:
+
+Product: {{productName}}
+Category: {{category}}
+Price: {{price}} TL
+Description: {{description}}
+
+Video type: {{type}}
+Duration: {{duration}} seconds
+
+Format:
+1. SCENE-BY-SCENE STORYBOARD (her sahne için):
+   - Scene number
+   - Duration
+   - Visual description (what's on screen)
+   - Camera movement
+   - Text/overlay (if any)
+
+2. NARRATION SCRIPT (Turkish):
+   - Complete voiceover/narration script in Turkish
+   - Match each line to the corresponding scene
+
+3. PRODUCTION NOTES:
+   - Music/style suggestions
+   - Color palette
+   - Mood/tone
+
+Make it compelling, professional, and suitable for women's fashion e-commerce.

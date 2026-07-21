@@ -1,0 +1,21 @@
+Professional ultra-realistic product photograph of a {{productName}} from a women's fashion brand.
+
+Product details:
+- Name: {{productName}}
+- Category: {{category}}
+- Description: {{description}}
+
+Style: {{style_prompt}}
+
+Critical requirements:
+- ULTRA REALISTIC — must look like a real photograph, not AI-generated
+- Photorealistic skin texture, fabric details, and material quality
+- Professional studio-grade lighting with natural shadows
+- Accurate product colors and proportions
+- Clean composition suitable for e-commerce product listing
+- Turkish female model wearing the product (for apparel items)
+- No text, logos, watermarks, or brand names on the image
+- 8K resolution quality, sharp focus on the product
+- Natural depth of field with soft background blur
+
+The image must be indistinguishable from a professional fashion photography studio shoot.

@@ -1,0 +1,22 @@
+Generate {{type}} content for the following product in a {{tone}} tone.
+
+Product: {{productName}}
+Category: {{category}}
+Price: {{price}} TL
+Description: {{description}}
+
+Type: {{type}}
+Tone: {{tone}}
+
+Guidelines:
+- Write in Turkish
+- Match the tone: {{tone}} (samimi=warm/friendly, luks=luxury/premium, genc=young/energetic, profesyonel=professional/formal)
+- Highlight key features and benefits
+- Include a clear call-to-action
+- Keep it concise and impactful
+- Use emojis sparingly (only for social media types)
+
+Output format:
+1. Main text
+2. 2 alternative variations (different angles/approaches)
+3. 3-5 hashtags (for social media types)
