@@ -48,7 +48,7 @@ export default async function AdminDashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold">Dashboard</h1>
+        <h1 className="font-heading text-3xl font-bold">Dashboard</h1>
         <p className="text-sm text-muted-foreground mt-1">
           {now.toLocaleDateString("tr-TR", {
             day: "numeric",
@@ -175,8 +175,8 @@ function StatCard({
   return href ? (
     <Link
       href={href}
-      className={`rounded-xl border p-5 hover:bg-muted/30 transition-colors ${
-        highlight ? "border-yellow-200 bg-yellow-50/50" : ""
+      className={`rounded-xl border p-5 hover:bg-muted/30 hover:shadow-sm transition-all ${
+        highlight ? "border-primary/30 bg-primary/5" : ""
       }`}
     >
       {inner}

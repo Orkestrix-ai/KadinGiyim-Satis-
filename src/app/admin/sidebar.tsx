@@ -4,6 +4,21 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { navItems } from "@/lib/admin-constants"
+import {
+  LayoutDashboard, Package, ShoppingCart, Tags,
+  Users, Ticket, RefreshCw, Wand2,
+} from "lucide-react"
+
+const iconMap: Record<string, React.ReactNode> = {
+  LayoutDashboard: <LayoutDashboard className="size-4" />,
+  Package: <Package className="size-4" />,
+  ShoppingCart: <ShoppingCart className="size-4" />,
+  Tags: <Tags className="size-4" />,
+  Users: <Users className="size-4" />,
+  Ticket: <Ticket className="size-4" />,
+  RefreshCw: <RefreshCw className="size-4" />,
+  Wand2: <Wand2 className="size-4" />,
+}
 
 interface Props {
   session: { user?: { email?: string | null; name?: string | null } } | null
@@ -18,8 +33,8 @@ export function AdminSidebar({ session, pendingOrders, failedDropshipping }: Pro
     <aside className="fixed left-0 top-0 bottom-0 w-64 border-r bg-card hidden md:flex flex-col z-30">
       <div className="p-6 border-b">
         <Link href="/admin" className="text-lg font-bold tracking-tight">
-          ModaCini
-          <span className="block text-xs font-normal text-muted-foreground">Yönetim Paneli</span>
+          <span className="font-heading text-xl text-primary">ModaCini</span>
+          <span className="block text-xs font-normal text-muted-foreground mt-0.5">Yönetim Paneli</span>
         </Link>
       </div>
 
@@ -41,7 +56,7 @@ export function AdminSidebar({ session, pendingOrders, failedDropshipping }: Pro
                   : "text-muted-foreground hover:text-foreground hover:bg-muted"
               )}
             >
-              <span className="text-base">{item.icon}</span>
+              <span className="flex-shrink-0">{iconMap[item.icon]}</span>
               <span>{item.label}</span>
               {(item.href === "/admin/orders" && pendingOrders > 0) ||
               (item.href === "/admin/dropshipping" && failedDropshipping > 0) ? (
@@ -57,7 +72,7 @@ export function AdminSidebar({ session, pendingOrders, failedDropshipping }: Pro
       <div className="p-4 border-t">
         <p className="text-xs text-muted-foreground truncate">{session?.user?.email ?? "Giriş yapılmadı"}</p>
         <Link href="/" className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-1 block">
-          Siteye Dön →
+          Siteye Dön &rarr;
         </Link>
       </div>
     </aside>

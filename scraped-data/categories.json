@@ -1,0 +1,274 @@
+[
+  {
+    "id": "2d6f9748-2de4-43d3-bfd0-e13598ea486f",
+    "name": "Etek",
+    "slug": "giyim-dis-giyim-etek",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Etek"
+  },
+  {
+    "id": "7cf72179-16f1-4eb8-9236-f33d5ede8563",
+    "name": "Kadın Bluz",
+    "slug": "giyim-dis-giyim-kadin-bluz",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Bluz"
+  },
+  {
+    "id": "7eb1dbfb-427b-4c91-85cf-8815e9632432",
+    "name": "Pijama Altı",
+    "slug": "giyim-alt-giyim-pijama-alti",
+    "main_category": "Giyim",
+    "top_category": "Alt Giyim",
+    "sub_category": "Pijama Altı"
+  },
+  {
+    "id": "e2c9cb7a-8083-49bb-a5a9-199eabfaee96",
+    "name": "Elbise",
+    "slug": "giyim-dis-giyim-elbise",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Elbise"
+  },
+  {
+    "id": "d708dc2c-acaf-49ea-9129-3ceb45cc6218",
+    "name": "Kadın Pantolon",
+    "slug": "giyim-alt-giyim-kadin-pantolon",
+    "main_category": "Giyim",
+    "top_category": "Alt Giyim",
+    "sub_category": "Kadın Pantolon"
+  },
+  {
+    "id": "4c65c50a-5c17-4485-9f05-f943a44c9429",
+    "name": "Kadın Şort",
+    "slug": "giyim-alt-giyim-kadin-sort",
+    "main_category": "Giyim",
+    "top_category": "Alt Giyim",
+    "sub_category": "Kadın Şort"
+  },
+  {
+    "id": "7d8aa6ef-432a-47bf-8b9a-514099162b0b",
+    "name": "TAYT",
+    "slug": "yaz-standart-giyim-tayt",
+    "main_category": "Standart Giyim",
+    "top_category": "TAYT",
+    "sub_category": ""
+  },
+  {
+    "id": "0b49070b-218a-432b-b0c7-e017b1711240",
+    "name": "Kadın Gömlek",
+    "slug": "giyim-ust-giyim-kadin-gomlek",
+    "main_category": "Giyim",
+    "top_category": "Üst Giyim",
+    "sub_category": "Kadın Gömlek"
+  },
+  {
+    "id": "27310172-cd23-4fcd-ad59-2213d013598f",
+    "name": "Kadın Yelek",
+    "slug": "giyim-dis-giyim-kadin-yelek",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Yelek"
+  },
+  {
+    "id": "7421c6ab-8d44-4adc-aeb0-004fa4797d01",
+    "name": "Kadın Kazak",
+    "slug": "giyim-ust-giyim-kadin-kazak",
+    "main_category": "Giyim",
+    "top_category": "Üst Giyim",
+    "sub_category": "Kadın Kazak"
+  },
+  {
+    "id": "2b4686bf-7131-4d9f-ad2d-569369b614aa",
+    "name": "Tunik",
+    "slug": "giyim-dis-giyim-tunik",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Tunik"
+  },
+  {
+    "id": "d2c42da0-fbad-4f7e-a489-eb920f19e787",
+    "name": "Kadın Çanta",
+    "slug": "aksesuralar-kadin-canta",
+    "main_category": "Aksesuralar",
+    "top_category": "Kadın Çanta",
+    "sub_category": ""
+  },
+  {
+    "id": "376282ea-2001-443e-9f4e-7d9be159d823",
+    "name": "Atkı-Şal-Bere",
+    "slug": "aksesuralar-atki-sal-bere",
+    "main_category": "Aksesuralar",
+    "top_category": "Atkı-Şal-Bere",
+    "sub_category": ""
+  },
+  {
+    "id": "8165c749-7538-4aac-8580-d69abafaa8f9",
+    "name": "Kadın Ceket",
+    "slug": "giyim-dis-giyim-kadin-ceket",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Ceket"
+  },
+  {
+    "id": "98f5c72f-6848-45f9-8b3d-e80dfe03b940",
+    "name": "Tulum",
+    "slug": "giyim-alt-giyim-tulum",
+    "main_category": "Giyim",
+    "top_category": "Alt Giyim",
+    "sub_category": "Tulum"
+  },
+  {
+    "id": "10298e70-3fa1-4065-835e-9d6f6125767f",
+    "name": "Kadın İkili Takım",
+    "slug": "giyim-dis-giyim-kadin-ikili-takim",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın İkili Takım"
+  },
+  {
+    "id": "d9360a62-0d00-40d4-82d6-890cef31e94c",
+    "name": "Eşofman",
+    "slug": "giyim-alt-giyim-esofman",
+    "main_category": "Giyim",
+    "top_category": "Alt Giyim",
+    "sub_category": "Eşofman"
+  },
+  {
+    "id": "50ea8b32-72dc-473f-a0bc-7d06557da880",
+    "name": "Kadın Swetshirt",
+    "slug": "giyim-dis-giyim-kadin-swetshirt",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Swetshirt"
+  },
+  {
+    "id": "d27c8c4c-e271-4241-8897-956e8b97e1ca",
+    "name": "Erkek Gömlek",
+    "slug": "erkek-gomlek",
+    "main_category": "Erkek Gömlek",
+    "top_category": "",
+    "sub_category": ""
+  },
+  {
+    "id": "200616a3-de50-471f-b1e4-9269879fbd60",
+    "name": "Aksesuralar",
+    "slug": "aksesuralar",
+    "main_category": "Aksesuralar",
+    "top_category": "",
+    "sub_category": ""
+  },
+  {
+    "id": "aaf295e8-54aa-4797-bd78-a231f1a51190",
+    "name": "Tesettür Elbise",
+    "slug": "tesettur-giyim-tesettur-elbise",
+    "main_category": "Tesettür Giyim",
+    "top_category": "Tesettür Elbise",
+    "sub_category": ""
+  },
+  {
+    "id": "df945237-4f41-4d89-8338-45f355969a2c",
+    "name": "Kimono",
+    "slug": "giyim-ust-giyim-kimono",
+    "main_category": "Giyim",
+    "top_category": "Üst Giyim",
+    "sub_category": "Kimono"
+  },
+  {
+    "id": "44a7f102-3090-46a8-ba90-b1806d83fc4f",
+    "name": "Kadın Hırka",
+    "slug": "giyim-dis-giyim-kadin-hirka",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Hırka"
+  },
+  {
+    "id": "dddc51fd-3155-4d92-ade6-4a9acd2cb9d6",
+    "name": "PANTOLON",
+    "slug": "kis-standart-giyim-pantolon",
+    "main_category": "Standart Giyim",
+    "top_category": "PANTOLON",
+    "sub_category": ""
+  },
+  {
+    "id": "c8299e30-e298-4158-a5a7-a127aa36be0e",
+    "name": "Kadın Mont",
+    "slug": "giyim-dis-giyim-kadin-mont",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Mont"
+  },
+  {
+    "id": "1ae6e214-47e0-48cb-b044-bafa3c1f37e0",
+    "name": "Kadın Terlik",
+    "slug": "aksesuralar-kadin-terlik",
+    "main_category": "Aksesuralar",
+    "top_category": "Kadın Terlik",
+    "sub_category": ""
+  },
+  {
+    "id": "62917eda-ee58-48ff-9056-39e2a9e5500e",
+    "name": "Kadın Kaban",
+    "slug": "giyim-dis-giyim-kadin-kaban",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Kaban"
+  },
+  {
+    "id": "2c745cc5-fbd7-42a0-b060-234034669368",
+    "name": "Kadın Trençkot",
+    "slug": "giyim-dis-giyim-kadin-trenckot",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Trençkot"
+  },
+  {
+    "id": "1cb2d7f3-ee72-4e24-8c75-83b44bd706e5",
+    "name": "Erkek Pantolon",
+    "slug": "erkek-pantolon",
+    "main_category": "Erkek Pantolon",
+    "top_category": "",
+    "sub_category": ""
+  },
+  {
+    "id": "ff4362fd-9bb1-4b01-afdb-6feaa0f4ce62",
+    "name": "MONT",
+    "slug": "kis-tesettur-mont",
+    "main_category": "Tesettür",
+    "top_category": "MONT",
+    "sub_category": ""
+  },
+  {
+    "id": "4de72f76-2961-468b-9260-1b4ef660411e",
+    "name": "Kadın T-Shirt",
+    "slug": "giyim-dis-giyim-kadin-t-shirt",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın T-Shirt"
+  },
+  {
+    "id": "cf55373d-fc15-41b7-aaa0-5dad74f12590",
+    "name": "Kadın Panço",
+    "slug": "giyim-dis-giyim-kadin-panco",
+    "main_category": "Giyim",
+    "top_category": "Dış Giyim",
+    "sub_category": "Kadın Panço"
+  },
+  {
+    "id": "41c8047e-3da8-4604-8e67-7a3993cb1e8f",
+    "name": "ÇANTA",
+    "slug": "yaz-standart-giyim-canta",
+    "main_category": "Standart Giyim",
+    "top_category": "ÇANTA",
+    "sub_category": ""
+  },
+  {
+    "id": "3a981093-6bb3-40eb-93b6-fb903f289bb2",
+    "name": "KEMER",
+    "slug": "yaz-standart-giyim-kemer",
+    "main_category": "Standart Giyim",
+    "top_category": "KEMER",
+    "sub_category": ""
+  }
+]

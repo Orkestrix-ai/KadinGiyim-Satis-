@@ -15,13 +15,14 @@ export const statusColors: Record<string, string> = {
 }
 
 export const navItems = [
-  { href: "/admin", label: "Dashboard", icon: "▦" },
-  { href: "/admin/products", label: "Ürünler", icon: "⊞" },
-  { href: "/admin/orders", label: "Siparişler", icon: "⊟" },
-  { href: "/admin/kategoriler", label: "Kategoriler", icon: "⊡" },
-  { href: "/admin/kullanicilar", label: "Kullanıcılar", icon: "⊛" },
-  { href: "/admin/coupons", label: "Kuponlar", icon: "⊜" },
-  { href: "/admin/dropshipping", label: "XML Dropshipping", icon: "⇄" },
+  { href: "/admin", label: "Dashboard", icon: "LayoutDashboard" },
+  { href: "/admin/products", label: "Ürünler", icon: "Package" },
+  { href: "/admin/orders", label: "Siparişler", icon: "ShoppingCart" },
+  { href: "/admin/kategoriler", label: "Kategoriler", icon: "Tags" },
+  { href: "/admin/kullanicilar", label: "Kullanıcılar", icon: "Users" },
+  { href: "/admin/coupons", label: "Kuponlar", icon: "Ticket" },
+  { href: "/admin/dropshipping", label: "XML Dropshipping", icon: "RefreshCw" },
+  { href: "/admin/urun-agent", label: "Ürün Agent", icon: "Wand2" },
 ]
 
 export const mobileNavItems = navItems.map(({ href, label }) => ({ href, label }))

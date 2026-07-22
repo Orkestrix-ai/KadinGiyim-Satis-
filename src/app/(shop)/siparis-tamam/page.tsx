@@ -15,7 +15,7 @@ export default async function OrderCompletePage({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h1 className="text-3xl font-bold mb-4">Siparişiniz Alındı!</h1>
+        <h1 className="font-heading text-3xl font-bold mb-4">Siparişiniz Alındı!</h1>
         <p className="text-muted-foreground mb-2">
           Siparişiniz başarıyla oluşturuldu. Sipariş numaranız:
         </p>

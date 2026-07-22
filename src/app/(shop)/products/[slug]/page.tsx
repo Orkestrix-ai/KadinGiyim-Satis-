@@ -2,6 +2,7 @@ import { prisma } from "@/lib/db"
 import { formatPrice } from "@/lib/utils"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import { ShoppingBag, Heart } from "lucide-react"
 
 export default async function ProductDetailPage({
   params,
@@ -17,26 +18,20 @@ export default async function ProductDetailPage({
   if (!product) notFound()
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold tracking-tight">
-            ModaCini
-          </Link>
-          <nav className="flex items-center gap-4">
-            <Link href="/" className="text-sm font-medium hover:text-primary/80 transition-colors">
-              Ana Sayfa
-            </Link>
-            <Link href="/products" className="text-sm font-medium hover:text-primary/80 transition-colors">
-              Ürünler
-            </Link>
-          </nav>
-        </div>
-      </header>
+    <div className="container mx-auto px-4 py-6">
+      <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+        <Link href="/" className="hover:text-foreground transition-colors">Ana Sayfa</Link>
+        <span>/</span>
+        <Link href="/products" className="hover:text-foreground transition-colors">Ürünler</Link>
+        <span>/</span>
+        <Link href={`/products?category=${product.category.slug}`} className="hover:text-foreground transition-colors">
+          {product.category.name}
+        </Link>
+      </nav>
 
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="aspect-[3/4] bg-muted rounded-xl overflow-hidden">
+      <div className="grid md:grid-cols-2 gap-8 md:gap-12">
+        <div className="space-y-4">
+          <div className="bg-muted rounded-2xl overflow-hidden aspect-[3/4]">
             {product.images[0] ? (
               <img
                 src={product.images[0]}
@@ -49,50 +44,59 @@ export default async function ProductDetailPage({
               </div>
             )}
           </div>
+        </div>
 
-          <div className="space-y-6">
-            <div>
-              <p className="text-sm text-muted-foreground">{product.category.name}</p>
-              <h1 className="text-3xl font-bold mt-1">{product.name}</h1>
-              <p className="text-2xl font-semibold mt-2">{formatPrice(Number(product.price))}</p>
+        <div className="space-y-6 md:sticky md:top-24 md:self-start">
+          <div>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider">{product.category.name}</p>
+            <h1 className="font-heading text-3xl md:text-4xl font-bold mt-1 leading-tight">{product.name}</h1>
+            <p className="text-2xl md:text-3xl font-semibold mt-3 text-primary">{formatPrice(Number(product.price))}</p>
+          </div>
+
+          {product.description && (
+            <div className="border-t pt-6">
+              <p className="text-muted-foreground leading-relaxed">{product.description}</p>
             </div>
+          )}
 
-            {product.description && (
-              <p className="text-muted-foreground">{product.description}</p>
-            )}
-
-            {product.variants.length > 0 && (
-              <div>
-                <h3 className="text-sm font-medium mb-2">Beden / Renk</h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.variants.map((v) => (
-                    <div
-                      key={v.id}
-                      className={`px-4 py-2 rounded-lg text-sm border ${
-                        v.stock > 0
-                          ? "hover:bg-muted cursor-pointer"
-                          : "opacity-50 line-through cursor-not-allowed"
-                      }`}
-                    >
-                      {v.size} / {v.color}
-                      {v.stock === 0 && " (Tükendi)"}
-                    </div>
-                  ))}
-                </div>
+          {product.variants.length > 0 && (
+            <div className="border-t pt-6">
+              <h3 className="text-sm font-medium mb-3">Beden / Renk</h3>
+              <div className="flex flex-wrap gap-2">
+                {product.variants.map((v) => (
+                  <div
+                    key={v.id}
+                    className={`px-4 py-2.5 rounded-xl text-sm border transition-all ${
+                      v.stock > 0
+                        ? "border-border hover:border-primary hover:bg-primary/5 cursor-pointer"
+                        : "opacity-40 line-through cursor-not-allowed bg-muted/50"
+                    }`}
+                  >
+                    {v.size} / {v.color}
+                    {v.stock === 0 && " (Tükendi)"}
+                  </div>
+                ))}
               </div>
-            )}
+            </div>
+          )}
 
+          <div className="border-t pt-6 space-y-3">
             <form>
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] cursor-pointer inline-flex items-center justify-center gap-2"
               >
+                <ShoppingBag className="size-4" />
                 Sepete Ekle
               </button>
             </form>
+            <button className="w-full py-3 rounded-xl border border-border text-sm font-medium hover:bg-muted transition-colors cursor-pointer inline-flex items-center justify-center gap-2">
+              <Heart className="size-4" />
+              Favorilere Ekle
+            </button>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   )
 }

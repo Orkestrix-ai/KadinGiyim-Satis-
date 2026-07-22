@@ -1,6 +1,18 @@
 import { prisma } from "@/lib/db"
 import { NextResponse } from "next/server"
 
+export async function GET() {
+  try {
+    const products = await prisma.product.findMany({
+      include: { category: true, variants: true },
+      orderBy: { createdAt: "desc" },
+    })
+    return NextResponse.json(products)
+  } catch (error) {
+    return NextResponse.json({ error: "Ürünler alınırken hata oluştu" }, { status: 500 })
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const { name, slug, description, price, categoryId, variants } = await req.json()
