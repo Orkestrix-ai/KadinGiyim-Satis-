@@ -149,9 +149,10 @@ model Order {
   billingCity     String
   billingDistrict String
   billingAddress  String
-  cargoCode       String?
-  cargoCompany    String?
-  createdAt       DateTime    @default(now())
+  cargoCode          String?
+  cargoCompany       String?
+  lemonsqueezyOrderId String?
+  createdAt          DateTime    @default(now())
 
   user  User        @relation(fields: [userId], references: [id])
   items OrderItem[]

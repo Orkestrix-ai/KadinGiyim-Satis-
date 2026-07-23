@@ -1,10 +1,16 @@
+import "dotenv/config"
 import { PrismaClient } from "../src/generated/prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
+import { Pool } from "pg"
 import bcrypt from "bcryptjs"
 import seedData from "../scraped-data/seed-data.json"
 
 async function main() {
-  const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL! })
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL!,
+    ssl: { rejectUnauthorized: false },
+  })
+  const adapter = new PrismaPg(pool)
   const prisma = new PrismaClient({ adapter })
 
   console.log("Mexelena seed başladı...")
@@ -76,7 +82,7 @@ async function main() {
   }
 
   const userDefs = [
-    { name: "Admin", email: "admin@modacini.com", password: "admin123", role: "ADMIN" as const },
+    { name: "Admin", email: "admin@nevrak.com", password: "admin123", role: "ADMIN" as const },
     { name: "Zeynep Yılmaz", email: "zeynep@example.com", password: "test123", role: "USER" as const },
     { name: "Ayşe Demir", email: "ayse@example.com", password: "test123", role: "USER" as const },
     { name: "Elif Kaya", email: "elif@example.com", password: "test123", role: "USER" as const },

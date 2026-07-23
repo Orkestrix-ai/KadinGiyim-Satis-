@@ -1,0 +1,8 @@
+﻿{
+    "version":  "7.8.0",
+    "steps":  [
+                  {
+                      "tag":  "CreateMigration"
+                  }
+              ]
+}
