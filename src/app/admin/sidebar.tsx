@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { navItems } from "@/lib/admin-constants"
 import {
   LayoutDashboard, Package, ShoppingCart, Tags,
-  Users, Ticket, RefreshCw, Wand2,
+  Users, Ticket, RefreshCw, Wand2, LogOut,
 } from "lucide-react"
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -18,6 +18,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Ticket: <Ticket className="size-4" />,
   RefreshCw: <RefreshCw className="size-4" />,
   Wand2: <Wand2 className="size-4" />,
+  LogOut: <LogOut className="size-4" />,
 }
 
 interface Props {
@@ -71,9 +72,18 @@ export function AdminSidebar({ session, pendingOrders, failedDropshipping }: Pro
 
       <div className="p-4 border-t">
         <p className="text-xs text-muted-foreground truncate">{session?.user?.email ?? "Giriş yapılmadı"}</p>
-        <Link href="/" className="text-xs text-muted-foreground hover:text-foreground transition-colors mt-1 block">
-          Siteye Dön &rarr;
-        </Link>
+        <div className="flex items-center justify-between mt-2">
+          <Link href="/" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+            Siteye Dön &rarr;
+          </Link>
+          <Link
+            href="/cikis"
+            className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-destructive transition-colors"
+          >
+            <LogOut className="size-3" />
+            Çıkış Yap
+          </Link>
+        </div>
       </div>
     </aside>
   )

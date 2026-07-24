@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react"
 import Link from "next/link"
-import { ShoppingBag, User, Search } from "lucide-react"
+import { ShoppingBag, User, Search, LogOut } from "lucide-react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -122,6 +122,15 @@ export function ScrollHeader({ session, cartCount }: ScrollHeaderProps) {
           >
             <User className="size-5" />
           </Link>
+          {session?.user && (
+            <Link
+              href="/cikis"
+              className="p-2 rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-destructive hidden md:inline-flex"
+              aria-label="Çıkış Yap"
+            >
+              <LogOut className="size-5" />
+            </Link>
+          )}
           <Link
             href="/sepet"
             className="p-2 rounded-lg hover:bg-muted transition-colors text-muted-foreground hover:text-foreground relative"

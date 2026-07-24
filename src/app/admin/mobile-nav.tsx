@@ -61,6 +61,13 @@ export function AdminMobileNav({ session }: Props) {
             <Link href="/" className="block px-3 py-2 text-xs text-muted-foreground hover:text-foreground">
               Siteye Dön →
             </Link>
+            <Link
+              href="/cikis"
+              onClick={() => setOpen(false)}
+              className="block px-3 py-2 text-xs text-destructive hover:text-destructive/80"
+            >
+              Çıkış Yap
+            </Link>
           </div>
         </div>
       )}
