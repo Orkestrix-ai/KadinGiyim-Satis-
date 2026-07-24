@@ -82,7 +82,7 @@ async function main() {
   }
 
   const userDefs = [
-    { name: "Admin", email: "admin@nevrak.com", password: "admin123", role: "ADMIN" as const },
+    { name: "Admin", email: "admin@modacini.com", password: "admin123", role: "ADMIN" as const },
     { name: "Zeynep Yılmaz", email: "zeynep@example.com", password: "test123", role: "USER" as const },
     { name: "Ayşe Demir", email: "ayse@example.com", password: "test123", role: "USER" as const },
     { name: "Elif Kaya", email: "elif@example.com", password: "test123", role: "USER" as const },
