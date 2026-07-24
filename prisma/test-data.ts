@@ -1,7 +1,7 @@
 export const testUsers = [
   {
     name: "Admin",
-    email: "admin@modacini.com",
+    email: "admin@nevrak.com",
     password: "admin123",
     role: "ADMIN" as const,
   },

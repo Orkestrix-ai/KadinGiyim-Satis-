@@ -1,53 +1,52 @@
 "use client"
 
-import { useActionState, useState } from "react"
-import { useRouter } from "next/navigation"
+import { Suspense, useState } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Mail, Lock, User, Loader2 } from "lucide-react"
-import { login } from "@/lib/actions"
+import { signIn } from "@/lib/auth-client"
 
 interface AuthCardProps {
   mode: "login" | "register"
 }
 
-export function AuthCard({ mode }: AuthCardProps) {
+function AuthCardInner({ mode }: AuthCardProps) {
   const router = useRouter()
+  const searchParams = useSearchParams()
   const isLogin = mode === "login"
-  const [loginError, formAction, isPending] = useActionState(login, undefined)
-  const [registerError, setRegisterError] = useState("")
-  const [registering, setRegistering] = useState(false)
+  const [error, setError] = useState(searchParams.get("error") ? "E-posta veya şifre hatalı" : "")
+  const [loading, setLoading] = useState(false)
 
-  async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setRegisterError("")
-    setRegistering(true)
+    setError("")
+    setLoading(true)
 
     const form = new FormData(e.currentTarget)
-    const name = form.get("name") as string
     const email = form.get("email") as string
     const password = form.get("password") as string
 
-    const res = await fetch("/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    })
-
-    if (!res.ok) {
-      const data = await res.json()
-      setRegisterError(data.error ?? "Kayıt sırasında bir hata oluştu")
-      setRegistering(false)
-      return
+    try {
+      if (isLogin) {
+        await signIn("credentials", { email, password, redirectTo: "/admin" })
+      } else {
+        const name = form.get("name") as string
+        const res = await fetch("/api/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password }),
+        })
+        if (!res.ok) {
+          const data = await res.json()
+          setError(data.error ?? "Kayıt sırasında bir hata oluştu")
+          setLoading(false)
+          return
+        }
+        await signIn("credentials", { email, password, redirectTo: "/admin" })
+      }
+    } catch {
+      setLoading(false)
     }
-
-    setRegistering(false)
-    const loginForm = new FormData()
-    loginForm.append("email", email)
-    loginForm.append("password", password)
-    formAction(loginForm)
   }
-
-  const error = loginError ?? registerError
-  const loading = isPending || registering
 
   return (
     <div className="w-full max-w-sm mx-auto">
@@ -59,7 +58,7 @@ export function AuthCard({ mode }: AuthCardProps) {
           </p>
         </div>
 
-        <form action={isLogin ? formAction : undefined} onSubmit={isLogin ? undefined : handleRegister} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {!isLogin && (
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-1.5">
@@ -134,5 +133,13 @@ export function AuthCard({ mode }: AuthCardProps) {
         </p>
       </div>
     </div>
+  )
+}
+
+export function AuthCard({ mode }: AuthCardProps) {
+  return (
+    <Suspense fallback={null}>
+      <AuthCardInner mode={mode} />
+    </Suspense>
   )
 }
