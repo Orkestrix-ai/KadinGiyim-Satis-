@@ -102,30 +102,6 @@ export function AuthCard({ mode }: AuthCardProps) {
           </button>
         </form>
 
-        <div className="relative my-6">
-          <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
-          </div>
-          <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-card px-3 text-muted-foreground">veya</span>
-          </div>
-        </div>
-
-        <div className="space-y-3">
-          <button
-            onClick={() => signIn("google", { redirectTo: "/admin" })}
-            className="w-full py-2.5 border border-border rounded-xl text-sm font-medium hover:bg-muted transition-colors cursor-pointer"
-          >
-            Google ile Devam Et
-          </button>
-          <button
-            onClick={() => signIn("facebook", { redirectTo: "/admin" })}
-            className="w-full py-2.5 border border-border rounded-xl text-sm font-medium hover:bg-muted transition-colors cursor-pointer"
-          >
-            Facebook ile Devam Et
-          </button>
-        </div>
-
         <p className="text-center text-sm text-muted-foreground mt-6">
           {isLogin ? "Hesabınız yok mu?" : "Zaten hesabınız var mı?"}{" "}
           <button
