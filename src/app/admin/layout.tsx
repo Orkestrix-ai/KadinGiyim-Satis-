@@ -5,6 +5,8 @@ import { prisma } from "@/lib/db"
 import { AdminSidebar } from "./sidebar"
 import { AdminMobileNav } from "./mobile-nav"
 
+export const dynamic = "force-dynamic"
+
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth()
   if (!session || session.user?.role !== "ADMIN") redirect("/login")

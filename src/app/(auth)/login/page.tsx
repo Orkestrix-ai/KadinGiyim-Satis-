@@ -3,6 +3,8 @@ import { redirect } from "next/navigation"
 import Link from "next/link"
 import { AuthCard } from "@/components/shared/auth-card"
 
+export const dynamic = "force-dynamic"
+
 export default async function LoginPage() {
   const session = await auth()
   const isAdmin = session?.user?.role === "ADMIN"
