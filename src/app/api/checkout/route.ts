@@ -55,16 +55,9 @@ export async function POST(req: Request) {
 
   const centsTotal = Math.round(Number(total) * 100)
 
-  const variantsResponse = await fetch("https://api.lemonsqueezy.com/v1/variants", {
-    headers: {
-      Authorization: `Bearer ${process.env.LEMONSQUEEZY_API_KEY}`,
-      Accept: "application/vnd.api+json",
-    },
-  })
-  const variantsData = await variantsResponse.json()
-  const variantId = variantsData?.data?.[0]?.id
+  const variantId = process.env.LEMONSQUEEZY_VARIANT_ID
   if (!variantId) {
-    return NextResponse.json({ error: "LemonSqueezy varyantı bulunamadı" }, { status: 500 })
+    return NextResponse.json({ error: "Ödeme varyantı yapılandırılmamış" }, { status: 500 })
   }
 
   const result = await createPaymentCheckout({

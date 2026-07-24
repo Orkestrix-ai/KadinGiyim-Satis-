@@ -1,63 +1,19 @@
 "use server"
 
-import { prisma } from "@/lib/db"
-import { z } from "zod"
-import bcrypt from "bcryptjs"
-import { revalidatePath } from "next/cache"
+import { signIn } from "@/lib/auth"
+import { AuthError } from "next-auth"
 
-export async function registerUser(formData: FormData) {
-  const schema = z.object({
-    name: z.string().min(2),
-    email: z.string().email(),
-    password: z.string().min(6),
-  })
-
-  const parsed = schema.parse({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-  })
-
-  const existing = await prisma.user.findUnique({ where: { email: parsed.email } })
-  if (existing) throw new Error("Bu e-posta adresi zaten kayıtlı")
-
-  const hashedPassword = await bcrypt.hash(parsed.password, 12)
-
-  await prisma.user.create({
-    data: {
-      name: parsed.name,
-      email: parsed.email,
-      password: hashedPassword,
-    },
-  })
-
-  revalidatePath("/")
-}
-
-export async function addToCart(productId: string, variantId: string, quantity: number = 1) {
-  const cart = await prisma.cart.findFirst()
-  if (!cart) {
-    await prisma.cart.create({
-      data: {
-        items: {
-          create: { variantId, quantity },
-        },
-      },
+export async function login(prev: string | undefined, formData: FormData) {
+  try {
+    await signIn("credentials", {
+      email: formData.get("email") as string,
+      password: formData.get("password") as string,
+      redirectTo: "/admin",
     })
-  } else {
-    const existingItem = await prisma.cartItem.findFirst({
-      where: { cartId: cart.id, variantId },
-    })
-    if (existingItem) {
-      await prisma.cartItem.update({
-        where: { id: existingItem.id },
-        data: { quantity: existingItem.quantity + quantity },
-      })
-    } else {
-      await prisma.cartItem.create({
-        data: { cartId: cart.id, variantId, quantity },
-      })
+  } catch (error) {
+    if (error instanceof AuthError) {
+      return "E-posta veya şifre hatalı"
     }
+    throw error
   }
-  revalidatePath("/")
 }

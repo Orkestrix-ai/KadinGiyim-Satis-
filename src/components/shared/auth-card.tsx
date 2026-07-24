@@ -1,8 +1,9 @@
 "use client"
 
-import { signIn } from "@/lib/auth-client"
+import { useActionState, useState } from "react"
 import { useRouter } from "next/navigation"
-import { Mail, Lock, User } from "lucide-react"
+import { Mail, Lock, User, Loader2 } from "lucide-react"
+import { login } from "@/lib/actions"
 
 interface AuthCardProps {
   mode: "login" | "register"
@@ -11,27 +12,42 @@ interface AuthCardProps {
 export function AuthCard({ mode }: AuthCardProps) {
   const router = useRouter()
   const isLogin = mode === "login"
+  const [loginError, formAction, isPending] = useActionState(login, undefined)
+  const [registerError, setRegisterError] = useState("")
+  const [registering, setRegistering] = useState(false)
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setRegisterError("")
+    setRegistering(true)
+
     const form = new FormData(e.currentTarget)
+    const name = form.get("name") as string
     const email = form.get("email") as string
     const password = form.get("password") as string
 
-    if (isLogin) {
-      await signIn("credentials", { email, password, redirectTo: "/admin" })
-    } else {
-      const name = form.get("name") as string
-      const res = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
-      })
-      if (res.ok) {
-        await signIn("credentials", { email, password, redirectTo: "/admin" })
-      }
+    const res = await fetch("/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password }),
+    })
+
+    if (!res.ok) {
+      const data = await res.json()
+      setRegisterError(data.error ?? "Kayıt sırasında bir hata oluştu")
+      setRegistering(false)
+      return
     }
+
+    setRegistering(false)
+    const loginForm = new FormData()
+    loginForm.append("email", email)
+    loginForm.append("password", password)
+    formAction(loginForm)
   }
+
+  const error = loginError ?? registerError
+  const loading = isPending || registering
 
   return (
     <div className="w-full max-w-sm mx-auto">
@@ -43,7 +59,7 @@ export function AuthCard({ mode }: AuthCardProps) {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form action={isLogin ? formAction : undefined} onSubmit={isLogin ? undefined : handleRegister} className="space-y-4">
           {!isLogin && (
             <div>
               <label htmlFor="name" className="block text-sm font-medium mb-1.5">
@@ -94,11 +110,16 @@ export function AuthCard({ mode }: AuthCardProps) {
               />
             </div>
           </div>
+          {error && (
+            <p className="text-sm text-destructive text-center">{error}</p>
+          )}
           <button
             type="submit"
-            className="w-full py-2.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] cursor-pointer"
+            disabled={loading}
+            className="w-full py-2.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/25 active:scale-[0.98] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            {isLogin ? "Giriş Yap" : "Kayıt Ol"}
+            {loading && <Loader2 className="size-4 animate-spin" />}
+            {loading ? "İşleniyor..." : isLogin ? "Giriş Yap" : "Kayıt Ol"}
           </button>
         </form>
 
