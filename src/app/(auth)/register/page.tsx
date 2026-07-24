@@ -10,7 +10,7 @@ export default async function RegisterPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4">
       <Link href="/" className="font-heading text-3xl font-bold text-primary mb-8">
-        ModaCini
+        Nevrak
       </Link>
       <AuthCard mode="register" />
     </div>

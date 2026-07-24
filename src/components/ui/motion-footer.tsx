@@ -75,7 +75,7 @@ export function CinematicFooter() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
             <Link href="/" className="font-heading text-2xl font-bold tracking-tight text-primary">
-              ModaCini
+              Nevrak
             </Link>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed max-w-xs">
               Modern çizgileri geleneksel zarafetle buluşturan kadın giyim markası. Her anınıza özel tasarımlar.
@@ -111,7 +111,7 @@ export function CinematicFooter() {
 
       <div className="border-t border-border/30">
         <div className="container mx-auto px-4 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-[11px] text-muted-foreground/60">&copy; 2026 ModaCini. T&uuml;m haklar&#x131; sakl&#x131;d&#x131;r.</p>
+          <p className="text-[11px] text-muted-foreground/60">&copy; 2026 Nevrak. T&uuml;m haklar&#x131; sakl&#x131;d&#x131;r.</p>
           <div className="flex items-center gap-4 text-[11px] text-muted-foreground/60">
             <Link href="/kvkk" className="hover:text-foreground transition-colors">KVKK</Link>
             <Link href="/gizlilik-politikasi" className="hover:text-foreground transition-colors">Gizlilik</Link>

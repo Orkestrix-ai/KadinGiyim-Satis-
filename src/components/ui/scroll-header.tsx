@@ -77,7 +77,7 @@ export function ScrollHeader({ session, cartCount }: ScrollHeaderProps) {
             ref={logoRef}
             className="font-heading text-2xl font-bold tracking-tight text-primary shrink-0"
           >
-            ModaCini
+            Nevrak
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link

@@ -33,7 +33,7 @@ export function AdminSidebar({ session, pendingOrders, failedDropshipping }: Pro
     <aside className="fixed left-0 top-0 bottom-0 w-64 border-r bg-card hidden md:flex flex-col z-30">
       <div className="p-6 border-b">
         <Link href="/admin" className="text-lg font-bold tracking-tight">
-          <span className="font-heading text-xl text-primary">ModaCini</span>
+          <span className="font-heading text-xl text-primary">Nevrak</span>
           <span className="block text-xs font-normal text-muted-foreground mt-0.5">Yönetim Paneli</span>
         </Link>
       </div>

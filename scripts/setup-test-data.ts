@@ -234,7 +234,7 @@ async function updatePrices() {
 
 async function main() {
   console.log("╔══════════════════════════════════════════════════╗")
-  console.log("║   ModaCini - Test Verisi Kurulum Aracı          ║")
+  console.log("║   Nevrak - Test Verisi Kurulum Aracı          ║")
   console.log("╚══════════════════════════════════════════════════╝\n")
 
   const usePhotos = process.argv.includes("--live")

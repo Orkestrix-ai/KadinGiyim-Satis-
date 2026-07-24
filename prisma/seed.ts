@@ -175,7 +175,7 @@ async function main() {
   const allVariantIds = [...createdVariantSkus.values()]
   const allUserIds = [...createdUserIds.values()]
   const nonAdminUserIds = allUserIds.filter(
-    (id) => id !== createdUserIds.get("admin@modacini.com")
+    (id) => id !== createdUserIds.get("admin@nevrak.com")
   )
 
   const testOrders = [

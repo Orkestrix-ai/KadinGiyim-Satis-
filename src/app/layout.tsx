@@ -21,8 +21,8 @@ const cormorant = Cormorant({
 
 export const metadata: Metadata = {
   title: {
-    default: "ModaCini | Kadın Giyim",
-    template: "%s | ModaCini",
+    default: "Nevrak | Kadın Giyim",
+    template: "%s | Nevrak",
   },
   description: "Kadın giyimde en yeni trendler, şık elbiseler, üst giyim, dış giyim ve aksesuarlar. Kaliteli ve uygun fiyatlı kadın giyim ürünleri.",
 };

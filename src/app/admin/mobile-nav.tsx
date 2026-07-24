@@ -20,7 +20,7 @@ export function AdminMobileNav({ session }: Props) {
     <div className="md:hidden fixed top-0 left-0 right-0 z-50 border-b bg-card">
       <div className="flex items-center justify-between px-4 h-14">
         <Link href="/admin" className="font-bold text-sm">
-          ModaCini Admin
+          Nevrak Admin
         </Link>
         <button
           onClick={() => setOpen(!open)}
