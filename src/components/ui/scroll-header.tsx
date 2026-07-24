@@ -15,6 +15,7 @@ interface ScrollHeaderProps {
       name?: string | null
       email?: string | null
       image?: string | null
+      role?: string
     }
   } | null
   cartCount: number
@@ -98,6 +99,14 @@ export function ScrollHeader({ session, cartCount }: ScrollHeaderProps) {
             >
               Çok Satanlar
             </Link>
+            {session?.user?.role === "ADMIN" && (
+              <Link
+                href="/admin"
+                className="text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+              >
+                Admin
+              </Link>
+            )}
           </nav>
         </div>
 
